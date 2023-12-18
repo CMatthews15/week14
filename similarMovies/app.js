@@ -6,6 +6,7 @@ const fetch = require('node-fetch');
 let port= 3000;
 
 
+movieList().then(movies=> console.log(movies))
 
 
 app.listen(port, () =>

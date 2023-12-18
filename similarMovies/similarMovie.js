@@ -5,11 +5,9 @@
  const fetch = require('node-fetch');
  let movieID= require('./findMovie');
 let port= 4000;
-movieID=299536;
 
 
 
- const url = `https://api.themoviedb.org/3/movie/${movieID}/similar?language=en-US&page=1`;
  const options = {
    method: 'GET',
    headers: {
@@ -20,23 +18,17 @@ movieID=299536;
  
 
   async function similarMovie(){
- 
+    const id = await movieID()
+    const url = `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`;
+
  // the fetch function is used 
  return fetch(url, options)
    .then(res => res.json())
-   .then(json => console.log(json.results[0]))
-    //,json.results[1],json.results[2],json.results[3]))
+   .then(json => console.log(json.results[0]
+    ,json.results[1],json.results[2],json.results[3]))
    .catch(err => console.error('error:' + err));
  
    
  }
  
- 
- similarMovie()
- 
- 
- 
- app.listen(port, () =>
- console.log(`Server is running on port ${port}`))
- 
- module.exports = similarMovie.json
+ module.exports = similarMovie
